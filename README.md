@@ -1,12 +1,24 @@
-Current available endpoints
+# Domestic Violence Survivor tool
 
-- register as a new user with /register
-  a unique username and password is required.
+### Description
+This web app was made to help those with domestic violence struggles so they can find a way to move and become financially stable.
+Use the calculator to see how much money you spend from where u are and compare it to where you want to move, to see if this would be a good move.
 
-- login as a registered user and become authendicated /login
-  once loged in you will be given a token showing that you are logged in and authenticated
+### Current available endpoints
+* register as a new user with https://domestic-violence-build-week.herokuapp.com/register
 
-- view a list of current users and theyre id number /users
+to register |  required
+------------|-----------
+username    |   yes       
+password    |   yes
+
+* login as a registered user and become authendicated 
+https://domestic-violence-build-week.herokuapp.com/login
+
+  * once loged in you will be given a token showing that you are logged in and authenticated
+
+* view a list of current users and theyre id number when logged in as an authenticated user.
+https://domestic-violence-build-week.herokuapp.com/users
 
 [ ] functionality currently available
 
