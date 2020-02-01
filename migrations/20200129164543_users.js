@@ -1,40 +1,56 @@
 exports.up = async knex => {
-    await knex.schema.createTable("users", users => {
-      users.increments();
-      users
-        .string("username", 128)
-        .notNullable()
-        .unique();
-      users.string("password", 128).notNullable();
-    });
-    await knex.schema.createTable("user data", users => {
-      users.integer("monthly-income").notNullable()
-      users.integer("transportation").notNullable()
-      users.integer("food").notNullable()
-      users.integer("health-insurance").notNullable()
-      users.integer("car").notNullable()
-      users.integer("car-insurance", 150).notNullable()
-      users.integer("loans", 150).notNullable()
-      users.integer("other", 150)
-    })
-    await knex.schema.createTable("user move to", users => {
-      users.integer("hotel-costs")
-      users.integer("new-rental-deposit").notNullable()
-      users.integer("connect-utilities").notNullable()
-      users.integer("storage-unit")
-      users.integer("new-monthly-rent").notNullable()
-      users.integer("car-rental-and-gas")
-      users.integer("cell-phone")
-      users.integer("moving-truck")
-      users.integer("gas-for-moving-truck")
-      users.integer("mental-health-treatment")
-      users.integer("income-loss")
-      users.integer("additional-security-measures")
-    })
-  };
-  
-  exports.down = async knex => {
-    await knex.schema.dropTableIfExists("users");
-    await knex.schema.dropTableIfExists("user data");
-    await knex.schema.dropTableIfExists("user move to");
-  };
+  await knex.schema.createTable("users", users => {
+    users.increments()
+    users
+      .string("username", 128)
+      .notNullable()
+      .unique()
+    users.string("password", 128).notNullable()
+  });
+  await knex.schema.createTable("monthly costs", users => {
+    users.increments()
+    users
+      .integer("userId")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("users")
+    users.integer("monthlyIncome").notNullable()
+    users.integer("transportation").notNullable()
+    users.integer("food").notNullable()
+    users.integer("healthInsurance")
+    users.integer("car")
+    users.integer("carInsurance")
+    users.integer("loans")
+    users.integer("other")
+  });
+  await knex.schema.createTable("relocation costs", users => {
+    users.increments()
+    users
+      .integer("userId")
+      .unsigned()
+      .notNullable()
+      .references("id")
+      .inTable("users")
+    users.integer("hotelCosts")
+    users.integer("newRentalDeposit").notNullable()
+    users.integer("connectUtilities").notNullable()
+    users.integer("storageUnit")
+    users.integer("newMonthlyRent").notNullable()
+    users.integer("carRentalAndGas")
+    users.integer("cellPhone")
+    users.integer("movingTruck")
+    users.integer("gasForMovingTruck")
+    users.integer("mentalHealthTreatment")
+    users.integer("incomeLoss")
+    users.integer("additionalSecurityMeasures")
+  });
+};
+
+exports.down = async knex => {
+  await knex.schema.dropTableIfExists("relocation costs");
+  await knex.schema.dropTableIfExists("monthly costs");
+  await knex.schema.dropTableIfExists("users");
+
+};
+

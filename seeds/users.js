@@ -4,9 +4,9 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('users').insert([
-        {id: 1, username: 'Rachel', password: 'abc123'},
-        {id: 2, username: 'Alorah', password: 'cba321'},
-        {id: 3, username: 'Jessica',password: 'a1b2c3'}
+        {username: 'Rachel', password: 'abc123'},
+        {username: 'Alorah', password: 'cba321'},
+        {username: 'Jessica',password: 'a1b2c3'}
       ]);
     });
 };
