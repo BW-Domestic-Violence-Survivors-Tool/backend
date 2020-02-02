@@ -12,4 +12,15 @@ router.get("/user/origin", (req, res) => {
       .catch(err => res.json(err));
   });
 
+  
+
+  router.post("/user/origin/addData", (req, res) => {
+    users
+      .add()
+      .then(users => {
+        res.send(users);
+      })
+      .catch(err => res.json(err));
+  });
+
   module.exports = router;
