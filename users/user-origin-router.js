@@ -12,15 +12,42 @@ router.get("/user/origin", (req, res) => {
       .catch(err => res.json(err));
   });
 
-  
-
-  router.post("/user/origin/addData", (req, res) => {
+  router.get("/user/origin/:id", (req, res) => {
+    const id = req.params.id
     users
-      .add()
+      .findById(id)
       .then(users => {
         res.send(users);
       })
-      .catch(err => res.json(err));
+      .catch(err => {
+        console.log(err)
+        return res.json(err)
+      });
+  });
+
+  router.post("/user/origin/addData", (req, res) => {
+    users
+      .add(req.body)
+      .then(users => {
+        res.send(users);
+      })
+      .catch(err => {
+        console.log(err)
+        return res.json(err)
+      });
+  });
+
+  router.delete("/user/origin/delete/:id", (req, res) => {
+    const id = req.params.id
+    users
+      .remove(id)
+      .then(users => {
+        res.send(users);
+      })
+      .catch(err => {
+        console.log(err)
+        return res.json(err)
+      });
   });
 
   module.exports = router;
