@@ -56,4 +56,17 @@ router.post("/login", async (req, res, next) => {
     next(err);
   }
 });
+
+router.delete("/user/origin/delete/:id", (req, res) => {
+  const id = req.params.id
+  users
+    .remove(id)
+    .then(users => {
+      res.send(users);
+    })
+    .catch(err => {
+      console.log(err)
+      return res.json(err)
+    });
+});
 module.exports = router;

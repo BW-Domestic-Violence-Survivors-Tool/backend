@@ -41,19 +41,13 @@ function add(data) {
   })
 }
 
-function remove(id) {
-  return  db("users").delete(id).where({ id })
-  .then(res => {
-    return find()
-  })
-}
+
 
 module.exports = {
   find,
   findBy,
   findById,
-  add, 
-  remove
+  add
 };
 //  monthlyIncome: req.body.monthlyIncome,
 // transportation: req.body.transportation,

@@ -23,9 +23,17 @@ async function add(user) {
   return findById(id)
 }
 
+function remove(id) {
+  return  db("users").delete(id).where({ id })
+  .then(res => {
+    return find()
+  })
+}
+
 module.exports = {
   find,
   findBy,
   findById,
   add,
+  remove
 };
