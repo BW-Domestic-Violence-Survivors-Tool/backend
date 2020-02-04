@@ -2,7 +2,7 @@ const bcrypt = require("bcryptjs");
 const db = require("../data/db-config");
 
 function find() {
-    return db("users")
+    return db("users as u")
   }
 
   function findById(id) {
