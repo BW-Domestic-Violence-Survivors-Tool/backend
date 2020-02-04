@@ -42,6 +42,7 @@ router.post("/login", async (req, res, next) => {
     const passwordValid = await bcrypt.compare(password, user.password);
     if (user && passwordValid) {
       const token = generateToken(user);
+      console.log(token)
       res.status(200).json({
         token,
         message: `Welcome ${user.username}!`
