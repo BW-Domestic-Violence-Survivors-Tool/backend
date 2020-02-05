@@ -57,7 +57,7 @@ router.post("/login", async (req, res, next) => {
   }
 });
 
-router.delete("/user/origin/delete/:id", (req, res) => {
+router.delete("/delete/:id", (req, res) => {
   const id = req.params.id
   users
     .remove(id)

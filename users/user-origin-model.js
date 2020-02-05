@@ -1,29 +1,20 @@
-const bcrypt = require("bcryptjs");
 const db = require("../data/db-config");
-
-function find() {
-  return db("users as u")
-    .select(
-      "u.id",
-      "u.username"
-    );
-}
 
 function findById(id) {
   console.log(id);
   return db("users as u")
     .leftJoin("monthly costs as m", "u.id", "=", "m.userId")
     .select(
-      "u.id",
-      "u.username",
-      "m.monthlyIncome",
-      "m.transportation",
-      "m.food",
-      "m.healthInsurance",
-      "m.car",
-      "m.carInsurance",
-      "m.loans",
-      "m.other"
+        "u.id",
+        "u.username",
+        "m.monthlyIncome",
+        "m.transportation",
+        "m.food",
+        "m.healthInsurance",
+        "m.car",
+        "m.carInsurance",
+        "m.loans",
+        "m.other"
     )
     .where("u.id", id);
 }
@@ -31,7 +22,15 @@ function findById(id) {
 function findBy(filter) {
   return db("users")
     .where(filter)
-    .select("id", "username", "password");
+    .select("id", "username");
+}
+
+function update(data, id) {
+  return db("monthly costs").where({ id })
+    .update(data)
+    .then(res => {
+      return findById(id)
+    });
 }
 
 function add(data) {
@@ -41,19 +40,9 @@ function add(data) {
   })
 }
 
-
-
 module.exports = {
-  find,
-  findBy,
   findById,
-  add
-};
-//  monthlyIncome: req.body.monthlyIncome,
-// transportation: req.body.transportation,
-// food: req.body.food,
-// healthInsurance: req.body.healthInsurance,
-// car: req.body.car,
-// carInsurance: req.body.carInsurance,
-// loans: req.body.loans,
-// other: req.body.other
+  findBy,
+  update,
+  add,
+}

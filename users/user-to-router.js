@@ -4,24 +4,39 @@ const users = require("./user-to-model");
 
 const router = express.Router();
 
-router.get("/user/to", (req, res) => {
-    users
-      .find()
-      .then(users => {
-        res.send(users);
-      })
-      .catch(err => res.json(err));
-  });
-
   router.get("/user/to/:id", (req, res) => {
     const id = req.params.id
-    // const body = req.params.body
     users
       .findById(id)
       .then(users => {
         res.send(users);
       })
       .catch(err => res.json(err));
+  });
+
+  router.put("/user/to/addData", (req, res) => {
+    const id = req.params.id
+    users
+      .update(req.body, id)
+      .then(users => {
+        res.send(users);
+      })
+      .catch(err => {
+        console.log(err)
+        return res.json(err)
+      });
+  });
+
+  router.post("/user/to/addData", (req, res) => {
+    users
+      .add(req.body)
+      .then(users => {
+        res.send(users);
+      })
+      .catch(err => {
+        console.log(err)
+        return res.json(err)
+      });
   });
 
   module.exports = router
