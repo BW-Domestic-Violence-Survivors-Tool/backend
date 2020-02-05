@@ -52,7 +52,7 @@ router.post("/login", async (req, res, next) => {
         message: "Invalid Credentials"
       });
     }
-  } catch (err) {
+  } catch(err) {
     next(err);
   }
 });
