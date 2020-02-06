@@ -37,35 +37,18 @@ Use the calculator to see how much money you spend from where u are and compare 
 
 - view a list of current user monthly costs
 - replace :id in url with the users id
-  https://domestic-violence-build-week.herokuapp.com/user/origin/:id
+  https://domestic-violence-build-week.herokuapp.com/user/:id
 
 ## update user monthly costs
 
 - update the monthly cost calc
 - replace :id in url with the users id
-  https://domestic-violence-build-week.herokuapp.com/user/origin/addData/:id
+  https://domestic-violence-build-week.herokuapp.com/user/addData/:id
 
 ## add new data to the users monthly cost calc
 
 - original calc data input
-  https://domestic-violence-build-week.herokuapp.com/user/origin/addData/
-
-## get user data by id for relocation calculator
-
-- view a list of current user relocation costs
-- replace :id in url with the users id
-  https://domestic-violence-build-week.herokuapp.com/user/to/:i
-
-## update user relocation costs
-
-- update the relocation cost calc
-- replace :id in url with the users id
-  https://domestic-violence-build-week.herokuapp.com/user/to/addData/:id
-
-## add new data to the users relocation cost calc
-
-- original calc data input
-  https://domestic-violence-build-week.herokuapp.com/user/to/adddata
+  https://domestic-violence-build-week.herokuapp.com/user/addData/
 
 ## functionality currently available
 
@@ -76,5 +59,4 @@ Use the calculator to see how much money you spend from where u are and compare 
 - delete user by id
 
 ## unit testing with jest
-
 - 1 test per end point
