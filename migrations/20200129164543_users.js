@@ -7,7 +7,7 @@ exports.up = async knex => {
       .unique()
     users.string("password", 128).notNullable()
   });
-  await knex.schema.createTable("monthly costs", users => {
+  await knex.schema.createTable("budget review", users => {
     users.increments()
     users
       .integer("userId")
@@ -23,15 +23,6 @@ exports.up = async knex => {
     users.integer("carInsurance")
     users.integer("loans")
     users.integer("other")
-  });
-  await knex.schema.createTable("relocation costs", users => {
-    users.increments()
-    users
-      .integer("userId")
-      .unsigned()
-      .notNullable()
-      .references("id")
-      .inTable("users")
     users.integer("hotelCosts")
     users.integer("newRentalDeposit").notNullable()
     users.integer("connectUtilities").notNullable()
@@ -45,12 +36,11 @@ exports.up = async knex => {
     users.integer("incomeLoss")
     users.integer("additionalSecurityMeasures")
   });
-};
+}
+
 
 exports.down = async knex => {
-  await knex.schema.dropTableIfExists("relocation costs");
-  await knex.schema.dropTableIfExists("monthly costs");
+  await knex.schema.dropTableIfExists("budget review");
   await knex.schema.dropTableIfExists("users");
-
 };
 
