@@ -3,7 +3,7 @@ const db = require("../data/db-config");
 function findById(id) {
   console.log(id);
   return db("users as u")
-    .leftJoin("monthly costs as m", "u.id", "=", "m.userId")
+    .leftJoin("budget review as m", "u.id", "=", "m.userId")
     .select(
         "u.id",
         "u.username",
@@ -14,7 +14,19 @@ function findById(id) {
         "m.car",
         "m.carInsurance",
         "m.loans",
-        "m.other"
+        "m.other",
+        "m.hotelCosts",
+        "m.newRentalDeposit",
+        "m.connectUtilities",
+        "m.storageUnit",
+        "m.newMonthlyRent",
+        "m.carRentalAndGas",
+        "m.cellPhone",
+        "m.movingTruck",
+        "m.gasForMovingTruck",
+        "m.mentalHealthTreatment",
+        "m.incomeLoss",
+        "m.additionalSecurityMeasures"
     )
     .where("u.id", id);
 }
@@ -26,7 +38,7 @@ function findBy(filter) {
 }
 
 function update(data, id) {
-  return db("monthly costs").where({ id })
+  return db("budget review").where({ id })
     .update(data)
     .then(res => {
       return findById(id)
@@ -34,7 +46,7 @@ function update(data, id) {
 }
 
 function add(data) {
-  return  db("monthly costs").insert(data)
+  return  db("budget review").insert(data)
   .then(res => {
     return findById(id)
   })
