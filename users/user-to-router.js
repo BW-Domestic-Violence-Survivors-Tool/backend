@@ -14,7 +14,7 @@ const router = express.Router();
       .catch(err => res.json(err));
   });
 
-  router.put("/user/to/addData", (req, res) => {
+  router.put("/user/to/addData/:id", (req, res) => {
     const id = req.params.id
     users
       .update(req.body, id)
@@ -27,7 +27,7 @@ const router = express.Router();
       });
   });
 
-  router.post("/user/to/addData", (req, res) => {
+  router.post("/user/to/adddata", (req, res) => {
     users
       .add(req.body)
       .then(users => {

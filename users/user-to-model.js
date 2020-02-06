@@ -20,6 +20,7 @@ function findById(id) {
       "r.incomeLoss",
       "r.additionalSecurityMeasures"
     )
+   
     .where("u.id", id);
 }
 
